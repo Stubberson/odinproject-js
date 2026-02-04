@@ -1,0 +1,158 @@
+<!-- A little exercise on how to use a while loop -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // --- 1. EX
+        // Write a counter for even numbers until 10 
+        // ---
+        // let i = 0
+        // while (i <= 10) {
+        //     if (i % 2 === 0) {
+        //         alert(i)
+        //     }
+        //     i++
+        // }
+
+        // --- 2. EX
+        // Write the for-loop as a while-loop 
+        // ---
+        // for (let i = 0; i < 3; i++) {
+        //     alert( `number ${i}!` );
+        // }
+        // let i = 0;
+        // while (i < 3) {
+        //     alert(`Number ${i}!`)
+        //     i++
+        // }
+
+        // --- 3. EX
+        // Write a loop which prompts for a number greater than 100 until given or canceled 
+        // ---
+        // let invalid = true
+
+        // while (invalid) {
+        //     let number = prompt('Enter a number greater than 100', 0)
+        //     if (number > 100 || number === null) {  // number === null when the user cancels the prompt
+        //         invalid = false
+        //     }
+        // }
+
+        // --- 4. EX
+        // Sum of tripled evens 
+        // ---
+        // const array = [1, 2, 3, 4, 5, 6, 7, 8]
+
+        // function sumOfTripledEvens(array) {
+        //     return array
+        //         // Filter the array, so the following methods only conisder the filtered ones
+        //         .filter((num) => num % 2 === 0)
+        //         // Apply multiplication for each filtered item
+        //         .map((num) => num * 3)
+        //         // Sum all the filtered and multiplied items
+        //         .reduce((acc, curr) => acc + curr)
+        // }
+
+        // console.log(sumOfTripledEvens(array))
+
+        // --- 5. EX
+        // Write a "camelize" function that changes dash-separated words like “my-short-string” into camel-cased “myShortString” 
+        // ---
+        // const example1 = 'my-short-string'
+        // const example2 = '-another-String'
+        // const example3 = 'This-too'
+        // const example4 = '-Difficult'
+
+        // function camelize (string) {
+        //     let splitArray = string.split('-')
+        //     let firstWord = ''
+        //     let otherWords = ''
+        //     // Some strings might have an empty string as the first item (example2 and 4)
+        //     if (splitArray[0] === '') {
+        //         firstWord = splitArray[1].toLowerCase()
+        //         otherWords = splitArray.slice(2)
+        //     } else {
+        //         firstWord = splitArray[0].toLowerCase()
+        //         otherWords = splitArray.slice(1)
+        //     }
+
+        //     otherWords = otherWords.map(word => word[0].toUpperCase() + word.slice(1))
+        //     return firstWord + otherWords.join('')
+        // }
+
+        // console.log(camelize(example1))
+        // console.log(camelize(example2))
+        // console.log(camelize(example3))
+        // console.log(camelize(example4))
+        
+        // --- 6. EX
+        // Write a function filterRange(arr, a, b) that gets an array arr, looks for elements with values higher or equal to a 
+        // and lower or equal to b and return a result as an array. The function should not modify the array. It should return the new array. 
+        // ---
+        // const example1 = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+        // function filterRange (arr, a, b) {
+        //     return arr
+        //         .filter(item => item >= a && item <= b)
+        // }
+
+        // console.log(filterRange(example1, 2, 6), example1)
+
+        // --- 7. EX
+        // Write a function filterRangeInPlace(arr, a, b) that gets an array arr and removes from it all values except those that are between a and b. The test is: a ≤ arr[i] ≤ b.
+        // The function should only modify the array. It should not return anything. 
+        // ---
+        // const example1 = [5, 3, 8, 1]
+        // function filterRangeInPlace (arr, a, b) {
+        //     arr.forEach(num => {
+        //         if (num < a || num > b) {
+        //             arr.splice(arr.indexOf(num), 1)
+        //         }
+        //     })
+        // }
+        // filterRangeInPlace(example1, 1, 4)
+        // console.log(example1)
+
+        // --- 8. EX
+        // Sort in decreasing order 
+        // ---
+        // let arr = [5, 2, 1, -10, 8]
+
+        // // Ascending compareFn: (a, b) => a - b: A negative value indicates that "a" should come before "b"
+        // arr.sort((a, b) => b - a)
+
+        // console.log(arr)
+
+        // --- 9. EX
+        // Write the function shuffle(array) that shuffles (randomly reorders) elements of the array.
+        // Multiple runs of shuffle may lead to different orders of elements.
+        // let arr = [1, 2, 3]
+        // // This is the so-called Fisher-Yates algorithm using "destructuring assignment". I looked it up, couldn't figure it out on my own.
+        // function shuffle(array) {
+        //     for (let i = array.length - 1; i > 0; i--) {
+        //         let j = Math.floor(Math.random() * (i + 1))
+        //         [array[i], array[j]] = [array[j], array[i]]
+        //     }
+        // }
+
+        // --- 10. EX
+        // Create a function unique(arr) that returns an array with only unique items of arr.
+        let arr = ["Hare", "Krishna", "Hare", "Krishna", "Krishna", "Krishna", "Hare", "Hare", ":-O"]
+
+        function unique(arr) {
+            let newArr = []
+            for (let i = 0; i < arr.length; i++) {                
+                if (newArr.includes(arr[i]) === false) {
+                    newArr.push(arr[i])
+                }
+            }
+            return newArr
+        }
+    </script>
+</body>
+</html>

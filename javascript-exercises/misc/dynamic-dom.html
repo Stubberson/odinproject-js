@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container">
+    </div>
+    <script>
+        const container = document.querySelector("#container") 
+
+        const para = document.createElement('p')
+        para.textContent = "Hey I'm red!"
+        para.style.color = 'red'
+        
+        const smallTitle = document.createElement('h3')
+        smallTitle.textContent = "I'm a blue h3!"
+        smallTitle.style.color = 'blue'
+        
+        const smallContainer = document.createElement('div')
+        // If you use the setAttribute() method, you need to write proper CSS, not camelCase
+        smallContainer.setAttribute('style', 'border-style: solid; border-color: blue; background-color: pink;')
+            
+            const bigTitle = document.createElement('h1')
+            bigTitle.textContent = "I'm in a div!"
+            
+            const divPara = document.createElement('p')
+            divPara.textContent = "ME TOO!"
+            
+            smallContainer.appendChild(bigTitle)
+            smallContainer.appendChild(divPara)
+
+        // There is a way to create a "fragment" that allows to append multiple nodes at once, but this seems to be the way people actually do it
+        container.appendChild(para)
+        container.appendChild(smallTitle)
+        container.appendChild(smallContainer)
+    </script>
+</body>
+</html>

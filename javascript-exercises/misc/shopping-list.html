@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping List</title>
+    <style>
+        * {
+            margin: 0;
+        }
+
+        h1 {
+            margin: 16px;
+        }
+
+        form {
+            margin-left: 16px;
+        }
+
+        ul {
+            display: flex;
+            flex-direction: column;
+            padding-top: 12px;
+            gap: 12px;
+        }
+
+        li button {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>My Shopping List</h1>
+    <form method="get">
+        <label for="item">Enter a new item: </label>
+        <input type="text" name="item">
+        <button>Add item</button>
+    </form>
+
+    <ul></ul>
+
+    <script>
+        const input = document.querySelector('input')
+        const btn = document.querySelector('button')
+        const list = document.querySelector('ul')
+        
+        btn.addEventListener('click', (event) => {
+            // The preventDefault() prevents the <form> from submitting and effectively refreshing the page
+            event.preventDefault()
+            const product = input.value
+            input.value = ''
+
+            const addedProduct = document.createElement('li')
+            const span = document.createElement('span')
+            const discard = document.createElement('button')
+
+            addedProduct.appendChild(span)
+            addedProduct.appendChild(discard)
+
+            span.textContent = product
+            discard.textContent = 'Discard'
+
+            list.appendChild(addedProduct)
+
+            discard.addEventListener('click', () => {
+                addedProduct.remove()
+            })
+
+            input.focus()
+        })
+            
+    </script>
+</body>
+</html>
