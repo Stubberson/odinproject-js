@@ -8,7 +8,6 @@ let humanScore = 0
 // Create the computer's "choice"
 function getComputerChoice() {
     let randomChoice = Math.random()
-    console.log(randomChoice)
 
     if (randomChoice <= (1 / 3)) {
         return rock
@@ -19,40 +18,65 @@ function getComputerChoice() {
     }
 }
 
-// Prompt the human for a decision
-function getHumanChoice() {
-    return prompt("Rock, paper, or scissors?")
-}
+// A NodeList for all the buttons
+const buttons = document.querySelectorAll('button')
 
-// One game round
+buttons.forEach((btn) => {
+    btn.addEventListener('click', (event) => {
+        let choice = event.target
+        
+        switch (choice.innerText) {
+            case 'Rock':
+                playRound(getComputerChoice(), rock)
+                break
+            case 'Paper':
+                playRound(getComputerChoice(), paper)
+                break
+            case 'Scissors':
+                playRound(getComputerChoice(), scissors)
+                break
+        }
+    })
+}) 
+
+// Display the scores
+const scoreDisplay = document.querySelector('div')
+let announcement = document.createElement('p')
+let scores = document.createElement('p')
+const reset = document.createElement('button')
+reset.innerText = 'Reset'
+reset.hidden = true  // Keep hidden until the game has ended
+
+scoreDisplay.appendChild(announcement)
+scoreDisplay.appendChild(scores)
+scoreDisplay.appendChild(reset)
+
 function playRound(computerChoice, humanChoice) {
     humanChoice = humanChoice.toLowerCase()
-
     if (computerChoice === humanChoice) {
-        console.log(`Tie! Both chose ${computerChoice}!`)
+        announcement.innerText = `Tie! Both chose ${computerChoice}!`
     } else if ((computerChoice === rock && humanChoice === scissors) || (computerChoice === paper && humanChoice === rock) || (computerChoice === scissors && humanChoice === paper)) {
-        console.log(`Computer wins! ${computerChoice[0].toUpperCase() + computerChoice.substring(1)} beats ${humanChoice}.`)
+        announcement.innerText = `Computer wins! ${computerChoice[0].toUpperCase() + computerChoice.substring(1)} beats ${humanChoice}.`
         computerScore += 1
     }  else {
-        console.log(`You win! ${humanChoice[0].toUpperCase() + humanChoice.substring(1)} beats ${computerChoice}.`)
+        announcement.innerText = `You win! ${humanChoice[0].toUpperCase() + humanChoice.substring(1)} beats ${computerChoice}.`
         humanScore += 1
     }
-}
 
-// Play five rounds and declare the winner, unless it's a tie
-function playGame() {
-    for (let i = 0; i < 5; i++) {
-        playRound(getComputerChoice(), getHumanChoice())
+    scores.innerText = `Your score: ${humanScore}\nComputer score: ${computerScore}`
+
+    // Game reset
+    if (computerScore === 5 || humanScore === 5) {
+        let winnerScore = Math.max(computerScore, humanScore)
+        announcement.innerText = winnerScore === computerScore ? 'Computer won' : 'You won!'
+    
+        reset.hidden = false
+        reset.addEventListener('click', () => {
+            computerScore = 0
+            humanScore = 0
+            announcement.innerText = 'Game reset'
+            scores.innerText = `Your score: ${humanScore}\nComputer score: ${computerScore}`
+            reset.hidden = true
+        })
     }
-
-    if (computerScore > humanScore) {
-        console.log(`The computer beat you with a score of ${computerScore} to ${humanScore}... Better luck next time!`)
-    } else if (computerScore < humanScore) {
-        console.log(`You beat the computer with a score of ${humanScore} to ${computerScore}! Well done!`)
-    } else {
-        console.log('It is a tie!')
-    }
 }
-
-// Invoke the whole shabang!
-playGame()
