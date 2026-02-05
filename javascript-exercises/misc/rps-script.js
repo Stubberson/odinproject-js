@@ -53,23 +53,24 @@ scoreDisplay.appendChild(reset)
 
 function playRound(computerChoice, humanChoice) {
     humanChoice = humanChoice.toLowerCase()
-    if (computerChoice === humanChoice) {
-        announcement.innerText = `Tie! Both chose ${computerChoice}!`
-    } else if ((computerChoice === rock && humanChoice === scissors) || (computerChoice === paper && humanChoice === rock) || (computerChoice === scissors && humanChoice === paper)) {
-        announcement.innerText = `Computer wins! ${computerChoice[0].toUpperCase() + computerChoice.substring(1)} beats ${humanChoice}.`
-        computerScore += 1
-    }  else {
-        announcement.innerText = `You win! ${humanChoice[0].toUpperCase() + humanChoice.substring(1)} beats ${computerChoice}.`
-        humanScore += 1
+    if (computerScore < 5 && humanScore < 5) {
+        if (computerChoice === humanChoice) {
+            announcement.innerText = `Tie! Both chose ${computerChoice}!`
+        } else if ((computerChoice === rock && humanChoice === scissors) || (computerChoice === paper && humanChoice === rock) || (computerChoice === scissors && humanChoice === paper)) {
+            announcement.innerText = `Point for computer! ${computerChoice[0].toUpperCase() + computerChoice.substring(1)} beats ${humanChoice}.`
+            computerScore += 1
+        }  else {
+            announcement.innerText = `Point for you! ${humanChoice[0].toUpperCase() + humanChoice.substring(1)} beats ${computerChoice}.`
+            humanScore += 1
+        }
+
+        scores.innerText = `Your score: ${humanScore}\nComputer score: ${computerScore}`
     }
-
-    scores.innerText = `Your score: ${humanScore}\nComputer score: ${computerScore}`
-
     // Game reset
     if (computerScore === 5 || humanScore === 5) {
         let winnerScore = Math.max(computerScore, humanScore)
-        announcement.innerText = winnerScore === computerScore ? 'Computer won' : 'You won!'
-    
+        announcement.innerText = winnerScore === computerScore ? 'Computer won the game' : 'You won the game!'
+
         reset.hidden = false
         reset.addEventListener('click', () => {
             computerScore = 0
