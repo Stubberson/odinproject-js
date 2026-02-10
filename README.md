@@ -7,3 +7,7 @@ This is my repo for JavaScript in [The Odin Project](https://www.theodinproject.
 > <summary>04-02-26</summary>
 > I have learned about the DOM and how to manipulate it with JS. In addition, I've gotten a hang of branching and merging with git.
 > </details>
+> <details> 
+> <summary>10-02-26</summary>
+> I have now finished the foundations JavaScript exercises successfully.
+> </details>
