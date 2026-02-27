@@ -211,7 +211,6 @@
 
         // --- 14 EX Wes Bos exercises
             // Find them here: https://github.com/wesbos/JavaScript30/blob/master/04%20-%20Array%20Cardio%20Day%201/index-START.html
-            // Get your shorts on - this is an array workout!
 
             // const inventors = [
             //     { first: 'Albert', last: 'Einstein', year: 1879, passed: 1955 },
@@ -285,40 +284,75 @@
             // }, {})
             // console.table(instances)
 
-            const people = [
-                { name: 'Wes', year: 1988 },
-                { name: 'Kait', year: 1986 },
-                { name: 'Irv', year: 1970 },
-                { name: 'Lux', year: 2015 }
-            ];
+            // const people = [
+            //     { name: 'Wes', year: 1988 },
+            //     { name: 'Kait', year: 1986 },
+            //     { name: 'Irv', year: 1970 },
+            //     { name: 'Lux', year: 2015 }
+            // ];
 
-            const comments = [
-                { text: 'Love this!', id: 523423 },
-                { text: 'Super good', id: 823423 },
-                { text: 'You are the best', id: 2039842 },
-                { text: 'Ramen is my fav food ever', id: 123523 },
-                { text: 'Nice Nice Nice!', id: 542328 }
-            ];
+            // const comments = [
+            //     { text: 'Love this!', id: 523423 },
+            //     { text: 'Super good', id: 823423 },
+            //     { text: 'You are the best', id: 2039842 },
+            //     { text: 'Ramen is my fav food ever', id: 123523 },
+            //     { text: 'Nice Nice Nice!', id: 542328 }
+            // ];
 
-            // Some and Every Checks
-            // Array.prototype.some() // is at least one person 19 or older?
-            const oneNineteen = people.some(person => 2026 - person['year'] >= 19)
-            oneNineteen ? console.log('At least one person >= 19') : console.log('No person >= 19')
-            // Array.prototype.every() // is everyone 19 or older?
-            const allNineteen = people.every(person => 2026 - person['year'] >= 19)
-            allNineteen ? console.log('Everyone >= 19') : console.log('At least one person < 19')
+            // // Some and Every Checks
+            // // Array.prototype.some() // is at least one person 19 or older?
+            // const oneNineteen = people.some(person => 2026 - person['year'] >= 19)
+            // oneNineteen ? console.log('At least one person >= 19') : console.log('No person >= 19')
+            // // Array.prototype.every() // is everyone 19 or older?
+            // const allNineteen = people.every(person => 2026 - person['year'] >= 19)
+            // allNineteen ? console.log('Everyone >= 19') : console.log('At least one person < 19')
 
-            // Array.prototype.find()
-            // Find is like filter, but instead returns just the one you are looking for
-            // find the comment with the ID of 823423
-            const foundId = comments.find(obj => obj['id'] === 823423)
-            console.log(foundId)
+            // // Array.prototype.find()
+            // // Find is like filter, but instead returns just the one you are looking for
+            // // find the comment with the ID of 823423
+            // const foundId = comments.find(obj => obj['id'] === 823423)
+            // console.log(foundId)
 
-            // Array.prototype.findIndex()
-            // Delete the comment with the ID of 823423
-            const delIndex = comments.findIndex(obj => obj['id'] === 823423)
-            comments.splice(delIndex, 1)
-            console.table(comments)
+            // // Array.prototype.findIndex()
+            // // Delete the comment with the ID of 823423
+            // const delIndex = comments.findIndex(obj => obj['id'] === 823423)
+            // comments.splice(delIndex, 1)
+            // console.table(comments)
+
+        // --- EX 15
+        // Create an object constructor for a Book object. It should have Title, Author, No. Pages, Read, and an info() method
+        // function Book(title, author, pages, read) {
+        //     if (!new.target) {
+        //         throw Error("Use the 'new' operator!")
+        //     }
+        //     this.title = title,
+        //     this.author = author,
+        //     this.pages = pages,
+        //     this.read = read ? 'read' : 'not read',
+        //     this.info = function() {
+        //         console.log(`${this.title} by ${this.author}, ${this.pages}, ${this.read}`)
+        //     }
+        // }
+
+        // const theHobbit = new Book("The Hobbit", "J. R. R. Tolkien", 30, 0)
+        // console.log(theHobbit.info())
+
+        // --- EX 16
+        // Set objects' prototypes
+        function Hamster() {
+            this.stomach = [],
+
+            this.eat = function(food) {
+                this.stomach.push(food)
+            }
+        };
+
+        const speedy = new Hamster()
+        const lazy = new Hamster()
+
+        speedy.eat("apple")
+        console.log(`Speedy's stomach: ${speedy.stomach}`)
+        console.log(`Lazy's stomach: ${lazy.stomach}`)
     </script>
 </body>
 </html>
